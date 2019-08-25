@@ -1,0 +1,94 @@
+ProcessMonthlyAttendance(StartingDate, EndDate)
+{
+    ListofDates = EndDate - StartingDate;
+    foreach Employee e in Employees
+		if e.JoiningDate is in ListofDates
+			StartingDate = JoiningDate;
+			ListofDates = EndDate - StartingDate;
+		for each day d in ListofDates
+			if (IsWorkingDay(d))
+				GetAttendance(d,e)
+			else
+				return;
+	update LeaveBalance();
+}
+
+ 
+ 
+boolean IsWorkingDay(day)
+{
+    if ListofHolidays.contains(day)
+        return true;
+    else
+        return false;
+}
+ 
+AttendanceFinder(day, employee_id)
+{
+    AttendanceList = from x in AttendanceTable
+						where x.Date = day
+						select x;
+
+	c = AttendanceList.getEmployee(employee_id).count;
+	
+	// count will either be 0 or 1, that is, the employee is 
+	// either absent or present
+	
+	switch(c)
+	{
+		case 0: //non present employee
+				if employee_id exists in ExceptionAttendance Table
+					enter LeaveRecord Table;
+				else
+					check LeaveApplication
+					if present in LeaveApplication then 
+						enter LeaveRecord Table
+					else
+						Check balance leave and enter LeaveRecord Table;
+		
+		case 1: //code to handle present employee;
+				EntryTime = 9:50 AM;
+				ExitTime = 5:25 PM;
+				if (day exists in TimeException Table) //any one time will be modified;
+					EntryTime = TimeException.InTime;
+					ExitTime = TimeException.OutTime;
+					CalculateLeaveStatus(employee_id,EntryTime,ExitTime)
+	}
+}
+
+CalculateLeaveStatus(employee_id,EntryTime,ExitTime)
+{
+	calculate duration of leave
+	if duration > half day
+		check for applications
+		if application is present
+			update LeaveStatus
+		else
+			default;
+	else
+		default;	
+}
+
+LeaveBalance()
+{
+	read LeaveStatus table
+	calculate and update LeaveBalance
+}
+
+boolean CheckLeaveApplications(EmpId, Date)
+{
+	application = from x in LeaveApplications
+					where x.empid = EmpID and x.date = Date
+					select x.
+					
+	if applications.items.count == 0 return false
+	else return true;
+}
+
+LeaveDuration(StartTime, EndTime)
+{
+	//leave calculation logic.
+	return a double.
+	
+	
+}

@@ -1,0 +1,25 @@
+﻿<Window x:Class="MEAPS.SampleData"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MEAPS"
+        mc:Ignorable="d"
+        Title="SampleData" Height="300" Width="300" Closed="Window_Closed">
+    <Grid>
+        <Button x:Name="btnDel" Content="-" HorizontalAlignment="Left" Margin="186,239,0,0" VerticalAlignment="Top" Width="75" Click="btnDel_Click"/>
+        <Button x:Name="btnAdd" Content="+" HorizontalAlignment="Left" Margin="97,239,0,0" VerticalAlignment="Top" Width="75" Click="btnAdd_Click"/>
+        <Label x:Name="label_Copy8" Content="Entry Time:" HorizontalAlignment="Left" Margin="27,182,0,0" VerticalAlignment="Top" Width="109" HorizontalContentAlignment="Right"/>
+        <Label x:Name="label_Copy9" Content="Exit Time:" HorizontalAlignment="Left" Margin="27,210,0,0" VerticalAlignment="Top" Width="109" HorizontalContentAlignment="Right"/>
+        <ComboBox x:Name="cbInHrs" HorizontalAlignment="Left" Margin="154,185,0,0" VerticalAlignment="Top" Width="51"/>
+        <ComboBox x:Name="cbInMins" HorizontalAlignment="Left" Margin="210,185,0,0" VerticalAlignment="Top" Width="51"/>
+        <ComboBox x:Name="cbOutHrs" HorizontalAlignment="Left" Margin="154,212,0,0" VerticalAlignment="Top" Width="51"/>
+        <ComboBox x:Name="cbOutMins" HorizontalAlignment="Left" Margin="210,212,0,0" VerticalAlignment="Top" Width="51"/>
+        <DatePicker x:Name="dtDate" HorizontalAlignment="Left" Margin="154,156,0,0" VerticalAlignment="Top" Width="107"/>
+        <Label x:Name="label_Copy4" Content="Employee ID:" HorizontalAlignment="Left" Margin="27,124,0,0" VerticalAlignment="Top" Width="109" HorizontalContentAlignment="Right"/>
+        <Label x:Name="label_Copy5" Content="Date:" HorizontalAlignment="Left" Margin="27,155,0,0" VerticalAlignment="Top" Width="109" HorizontalContentAlignment="Right"/>
+        <ComboBox x:Name="cbEmp" HorizontalAlignment="Left" Margin="154,128,0,0" VerticalAlignment="Top" Width="107"/>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="27,19,0,0" VerticalAlignment="Top" Height="100" Width="234"/>
+
+    </Grid>
+</Window>

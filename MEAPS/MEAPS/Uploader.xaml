@@ -1,0 +1,20 @@
+﻿<Window x:Class="MEAPS.Uploader"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MEAPS"
+        mc:Ignorable="d"
+        Title="Uploader" Height="411.585" Width="461.891" Closed="Window_Closed" ResizeMode="NoResize">
+    <Grid>
+        <TextBox x:Name="txtPath" HorizontalAlignment="Left" Height="23" Margin="33,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="281"/>
+        <Button x:Name="btnBrowse" Content="Browse..." HorizontalAlignment="Left" Margin="319,93,0,0" VerticalAlignment="Top" Width="75" Height="24" Click="btnBrowse_Click"/>
+        <Button x:Name="btnUpload" Content="Append to Database" HorizontalAlignment="Left" Margin="33,125,0,0" VerticalAlignment="Top" Width="128" Height="20" Click="btnUpload_Click"/>
+        <Label x:Name="lblMsg" Content="Log:" HorizontalAlignment="Left" Margin="10,185,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5"/>
+        <Label x:Name="label" Content="Path to CSV file:" HorizontalAlignment="Left" Margin="33,70,0,0" VerticalAlignment="Top" Height="24"/>
+        <CheckBox x:Name="chkClear" Content="Clear all previous data" HorizontalAlignment="Left" Margin="177,128,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnClean" Content="Clean Raw Data" HorizontalAlignment="Left" Margin="33,150,0,0" VerticalAlignment="Top" Width="128" Click="btnClean_Click"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="First specify the spreadsheet to import the data from. Once the importing is successful, you can clean the raw data. Also, you can clean previously imported data using the Clean Raw Data button." VerticalAlignment="Top" Height="59" Width="434"/>
+
+    </Grid>
+</Window>

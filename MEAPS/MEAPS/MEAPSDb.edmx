@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MEAPSDbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="MEAPSDbModelStoreContainer">
+    <EntitySet Name="Attendances" EntityType="MEAPSDbModel.Store.Attendances" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CSVDatas" EntityType="MEAPSDbModel.Store.CSVDatas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Employees" EntityType="MEAPSDbModel.Store.Employees" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ExceptionAttendances" EntityType="MEAPSDbModel.Store.ExceptionAttendances" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Holidays" EntityType="MEAPSDbModel.Store.Holidays" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LeaveApplications" EntityType="MEAPSDbModel.Store.LeaveApplications" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LeaveStatuses" EntityType="MEAPSDbModel.Store.LeaveStatuses" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TimeExceptions" EntityType="MEAPSDbModel.Store.TimeExceptions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TabCtrls" EntityType="MEAPSDbModel.Store.TabCtrls" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Attendances">
+    <Key>
+      <PropertyRef Name="SISOId" />
+    </Key>
+    <Property Name="SISOId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="InTime" Type="time" Nullable="false" />
+    <Property Name="OutTime" Type="time" Nullable="false" />
+    <Property Name="Employee_EmpId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CSVDatas">
+    <Key>
+      <PropertyRef Name="Serial" />
+    </Key>
+    <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Dept" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EmpId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="In1" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Out1" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="In2" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Out2" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="In3" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Out3" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="In4" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Out4" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="In5" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Out5" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="EmpId" />
+    </Key>
+    <Property Name="EmpId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Dept" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="JoiningDate" Type="datetime" Nullable="false" />
+    <Property Name="CL" Type="float" Nullable="false" />
+    <Property Name="ML" Type="float" Nullable="false" />
+    <Property Name="EL" Type="float" Nullable="false" />
+    <Property Name="LWP" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ExceptionAttendances">
+    <Key>
+      <PropertyRef Name="EmpId" />
+    </Key>
+    <Property Name="EmpId" Type="int" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Remarks" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Holidays">
+    <Key>
+      <PropertyRef Name="Date" />
+    </Key>
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Comment" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LeaveApplications">
+    <Key>
+      <PropertyRef Name="ApplicationId" />
+    </Key>
+    <Property Name="ApplicationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Remarks" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EmployeeEmpId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LeaveStatuses">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="QCL_In" Type="int" Nullable="true" />
+    <Property Name="QCL_Out" Type="int" Nullable="true" />
+    <Property Name="HCL" Type="int" Nullable="true" />
+    <Property Name="FCL" Type="int" Nullable="true" />
+    <Property Name="HML" Type="int" Nullable="true" />
+    <Property Name="FML" Type="int" Nullable="true" />
+    <Property Name="EL" Type="int" Nullable="true" />
+    <Property Name="PresenceState" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EmployeeEmpId" Type="int" Nullable="false" />
+    <Property Name="LWP" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TimeExceptions">
+    <Key>
+      <PropertyRef Name="Date" />
+    </Key>
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="InTime" Type="time" Nullable="false" Precision="7" />
+    <Property Name="OutTime" Type="time" Nullable="false" Precision="7" />
+  </EntityType>
+  <EntityType Name="TabCtrls">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="selectedIndex" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MEAPSDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Attendance">
+          <Key>
+            <PropertyRef Name="SISOId" />
+          </Key>
+          <Property Name="SISOId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="InTime" Type="Time" Nullable="false" />
+          <Property Name="OutTime" Type="Time" Nullable="false" />
+          <Property Name="Employee_EmpId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CSVData">
+          <Key>
+            <PropertyRef Name="Serial" />
+          </Key>
+          <Property Name="Serial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Dept" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmpId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="In1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Out1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="In2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Out2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="In3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Out3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="In4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Out4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="In5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Out5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="EmpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Dept" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="JoiningDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CL" Type="Double" Nullable="false" />
+          <Property Name="ML" Type="Double" Nullable="false" />
+          <Property Name="EL" Type="Double" Nullable="false" />
+          <Property Name="LWP" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExceptionAttendance">
+          <Key>
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="EmpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Holiday">
+          <Key>
+            <PropertyRef Name="Date" />
+          </Key>
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LeaveApplication">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+          </Key>
+          <Property Name="ApplicationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmployeeEmpId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LeaveStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="QCL_In" Type="Int32" />
+          <Property Name="QCL_Out" Type="Int32" />
+          <Property Name="HCL" Type="Int32" />
+          <Property Name="FCL" Type="Int32" />
+          <Property Name="HML" Type="Int32" />
+          <Property Name="FML" Type="Int32" />
+          <Property Name="EL" Type="Int32" />
+          <Property Name="PresenceState" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmployeeEmpId" Type="Int32" Nullable="false" />
+          <Property Name="LWP" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TimeException">
+          <Key>
+            <PropertyRef Name="Date" />
+          </Key>
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="InTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="OutTime" Type="Time" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityContainer Name="MEAPSDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Attendances" EntityType="Self.Attendance" />
+          <EntitySet Name="CSVDatas" EntityType="Self.CSVData" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="ExceptionAttendances" EntityType="Self.ExceptionAttendance" />
+          <EntitySet Name="Holidays" EntityType="Self.Holiday" />
+          <EntitySet Name="LeaveApplications" EntityType="Self.LeaveApplication" />
+          <EntitySet Name="LeaveStatuses" EntityType="Self.LeaveStatus" />
+          <EntitySet Name="TimeExceptions" EntityType="Self.TimeException" />
+          <EntitySet Name="TabCtrls" EntityType="MEAPSDbModel.TabCtrl" />
+        </EntityContainer>
+        <EntityType Name="TabCtrl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="selectedIndex" Type="String" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MEAPSDbModelStoreContainer" CdmEntityContainer="MEAPSDbEntities">
+    <EntitySetMapping Name="Attendances">
+      <EntityTypeMapping TypeName="IsTypeOf(MEAPSDbModel.Attendance)">
+        <MappingFragment StoreEntitySet="Attendances">
+          <ScalarProperty Name="SISOId" ColumnName="SISOId" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="InTime" ColumnName="InTime" />
+          <ScalarProperty Name="OutTime" ColumnName="OutTime" />
+          <ScalarProperty Name="Employee_EmpId" ColumnName="Employee_EmpId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CSVDatas">
+      <EntityTypeMapping TypeName="IsTypeOf(MEAPSDbModel.CSVData)">
+        <MappingFragment StoreEntitySet="CSVDatas">
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Dept" ColumnName="Dept" />
+          <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+          <ScalarProperty Name="In1" ColumnName="In1" />
+          <ScalarProperty Name="Out1" ColumnName="Out1" />
+          <ScalarProperty Name="In2" ColumnName="In2" />
+          <ScalarProperty Name="Out2" ColumnName="Out2" />
+          <ScalarProperty Name="In3" ColumnName="In3" />
+          <ScalarProperty Name="Out3" ColumnName="Out3" />
+          <ScalarProperty Name="In4" ColumnName="In4" />
+          <ScalarProperty Name="Out4" ColumnName="Out4" />
+          <ScalarProperty Name="In5" ColumnName="In5" />
+          <ScalarProperty Name="Out5" ColumnName="Out5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="IsTypeOf(MEAPSDbModel.Employee)">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Dept" ColumnName="Dept" />
+          <ScalarProperty Name="JoiningDate" ColumnName="JoiningDate" />
+          <ScalarProperty Name="CL" ColumnName="CL" />
+          <ScalarProperty Name="ML" ColumnName="ML" />
+          <ScalarProperty Name="EL" ColumnName="EL" />
+          <ScalarProperty Name="LWP" ColumnName="LWP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExceptionAttendances">
+      <EntityTypeMapping TypeName="IsTypeOf(MEAPSDbModel.ExceptionAttendance)">
+        <MappingFragment StoreEntitySet="ExceptionAttendances">
+          <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Holidays">
+      <EntityTypeMapping TypeName="IsTypeOf(MEAPSDbModel.Holiday)">
+        <MappingFragment StoreEntitySet="Holidays">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LeaveApplications">
+      <EntityTypeMapping TypeName="IsTypeOf(MEAPSDbModel.LeaveApplication)">
+        <MappingFragment StoreEntitySet="LeaveApplications">
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="EmployeeEmpId" ColumnName="EmployeeEmpId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LeaveStatuses">
+      <EntityTypeMapping TypeName="IsTypeOf(MEAPSDbModel.LeaveStatus)">
+        <MappingFragment StoreEntitySet="LeaveStatuses">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="QCL_In" ColumnName="QCL_In" />
+          <ScalarProperty Name="QCL_Out" ColumnName="QCL_Out" />
+          <ScalarProperty Name="HCL" ColumnName="HCL" />
+          <ScalarProperty Name="FCL" ColumnName="FCL" />
+          <ScalarProperty Name="HML" ColumnName="HML" />
+          <ScalarProperty Name="FML" ColumnName="FML" />
+          <ScalarProperty Name="EL" ColumnName="EL" />
+          <ScalarProperty Name="PresenceState" ColumnName="PresenceState" />
+          <ScalarProperty Name="EmployeeEmpId" ColumnName="EmployeeEmpId" />
+          <ScalarProperty Name="LWP" ColumnName="LWP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TimeExceptions">
+      <EntityTypeMapping TypeName="IsTypeOf(MEAPSDbModel.TimeException)">
+        <MappingFragment StoreEntitySet="TimeExceptions">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="InTime" ColumnName="InTime" />
+          <ScalarProperty Name="OutTime" ColumnName="OutTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TabCtrls">
+      <EntityTypeMapping TypeName="IsTypeOf(MEAPSDbModel.TabCtrl)">
+        <MappingFragment StoreEntitySet="TabCtrls">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="selectedIndex" ColumnName="selectedIndex" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
